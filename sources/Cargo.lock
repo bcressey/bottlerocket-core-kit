@@ -2696,11 +2696,13 @@ dependencies = [
 name = "imdsclient"
 version = "0.1.0"
 dependencies = [
+ "aws-lc-rs",
  "generate-readme",
  "http 0.2.12",
  "httptest",
  "log",
  "reqwest",
+ "rustls 0.23.14",
  "serde_json",
  "snafu",
  "tokio",
