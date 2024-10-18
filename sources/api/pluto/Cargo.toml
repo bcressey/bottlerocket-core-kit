@@ -22,7 +22,7 @@ headers.workspace = true
 http.workspace = true
 hyper = { workspace = true, features = ["default"] }
 hyper-rustls = { workspace = true, features = ["http2", "logging", "native-tokio", "tls12"] }
-imdsclient.workspace = true
+imdsclient = { workspace = true, features = ["tls"] }
 aws-config.workspace = true
 aws-lc-rs = { workspace = true, features = ["bindgen"] }
 aws-sdk-eks.workspace = true
