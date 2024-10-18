@@ -81,7 +81,7 @@ members = [
 ]
 
 [workspace.dependencies]
-apiclient = { version = "0.1", path = "api/apiclient" }
+apiclient = { version = "0.1", path = "api/apiclient", default-features = false }
 block-party = { version = "0.1", path = "updater/block-party" }
 bottlerocket-release = { version = "0.1", path = "bottlerocket-release" }
 constants = { version = "0.1", path = "constants" }

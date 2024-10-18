@@ -902,6 +902,7 @@ async fn run() -> Result<()> {
     )
     .context(error::LoggerSnafu)?;
 
+    #[cfg(feature = "tls")]
     let _ = rustls::crypto::aws_lc_rs::default_provider().install_default();
 
     match subcommand {

@@ -10,10 +10,12 @@ build = "build.rs"
 exclude = ["README.md"]
 
 [features]
-fips = ["aws-lc-rs/fips", "rustls/fips"]
+default = ["tls"]
+tls = ["dep:rustls", "dep:aws-lc-rs", "reqwest/rustls-tls-native-roots"]
+fips = ["tls", "aws-lc-rs/fips", "rustls/fips"]
 
 [dependencies]
-aws-lc-rs = { workspace = true, features = ["bindgen"] }
+aws-lc-rs = { workspace = true, optional = true, features = ["bindgen"] }
 base64.workspace = true
 constants.workspace = true
 datastore.workspace = true
@@ -28,9 +30,9 @@ log.workspace = true
 models.workspace = true
 nix.workspace = true
 rand = { workspace = true, features = ["default"] }
-reqwest = { workspace = true, features = ["rustls-tls-native-roots"] }
+reqwest.workspace = true
 retry-read.workspace = true
-rustls.workspace = true
+rustls = { workspace = true, optional = true }
 serde = { workspace = true, features = ["derive"] }
 serde_json.workspace = true
 signal-hook.workspace = true
