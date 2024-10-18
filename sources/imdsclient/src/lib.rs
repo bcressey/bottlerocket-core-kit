@@ -56,7 +56,7 @@ impl Default for ImdsClient {
 
 impl ImdsClient {
     pub fn new() -> Self {
-        #[cfg(feature = "fips")]
+        #[cfg(feature = "tls")]
         let _ = rustls::crypto::aws_lc_rs::default_provider().install_default();
         Self::new_impl(BASE_URI.to_string())
     }
