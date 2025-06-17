@@ -17,6 +17,7 @@ members = [
   "packages/containerd-1.7",
   "packages/containerd-2.0",
   "packages/coreutils",
+  "packages/cri-tools",
   "packages/libcryptsetup",
   "packages/dbus-broker",
   "packages/docker-cli",
