@@ -1,0 +1,36 @@
+[package]
+name = "rapidgzip"
+version = "0.1.0"
+edition = "2021"
+publish = false
+build = "../build.rs"
+
+[lib]
+path = "../packages.rs"
+
+[package.metadata.build-package]
+releases-url = "https://github.com/mxmlnkn/rapidgzip/tags"
+
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/mxmlnkn/rapidgzip/archive/refs/tags/rapidgzip-v0.14.3.tar.gz"
+path = "rapidgzip-v0.14.3.tar.gz"
+sha512 = "f06238cc62cb81060a08574c2e339b9566a0c0278791c95945d8accbb767ef41d20ad40c455df5ebb5d33f217cd1c0d9e404f9d22739afc6a41306b8aec3cb3c"
+
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/jarro2783/cxxopts/archive/refs/tags/v3.2.0.tar.gz"
+path = "cxxopts-3.2.0.tar.gz"
+sha512 = "7265de66b92591255488d01bc26ca874423c75223e2e157a99f14fdd3e92e8d2669b72732acac3ce835190f1a09c13a994c480f0513f229eba8aa008e3d98955"
+
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/mjansson/rpmalloc/archive/refs/tags/1.4.5.tar.gz"
+path = "rpmalloc-1.4.5.tar.gz"
+sha512 = "1addc717d7bbc7a39a121ca5e25403522c517824c614107e9b1ac1d3eda2717f3580ff431eb9bbea06c2762c9307b48d8a902dbf871828fd4dce10831e83bec0"
+
+[[package.metadata.build-package.external-files]]
+url = "https://github.com/mxmlnkn/isa-l/archive/fb41a9673f23cd965d1f474450ebf80a0d660c8f.tar.gz"
+path = "isa-l-fb41a9673f23cd965d1f474450ebf80a0d660c8f.tar.gz"
+sha512 = "bb24aed75ae8fbbbfbd4f167980cbd7b475c789c348a2f45ed217c8a30eaa6ff386570e0cbbe516fcde9568afa3238999249934f10ffee2a514c5acde8442955"
+
+[build-dependencies]
+glibc = { path = "../glibc" }
+libz = { path = "../libz" }

@@ -107,6 +107,7 @@ members = [
   "packages/pigz",
   "packages/policycoreutils",
   "packages/procps",
+  "packages/rapidgzip",
   "packages/rdma-core",
   "packages/readline",
   "packages/release",

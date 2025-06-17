@@ -1,0 +1,44 @@
+From a217a2da167715ce650909407a153cee0c331ee1 Mon Sep 17 00:00:00 2001
+From: Ben Cressey <bcressey@amazon.com>
+Date: Tue, 17 Jun 2025 20:52:06 +0000
+Subject: [PATCH] build: skip tests and benchmarks
+
+Signed-off-by: Ben Cressey <bcressey@amazon.com>
+---
+ CMakeLists.txt     | 4 ----
+ src/CMakeLists.txt | 2 --
+ 2 files changed, 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8d15183..78d6a5d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -82,10 +82,6 @@ add_custom_target(check-memcheck
+     WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
+ )
+ 
+-add_dependencies(check all_tests)
+-add_dependencies(check-memcheck all_tests)
+-
+-
+ # Add beautify target
+ 
+ find_package(Git QUIET)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 376e2a0..bcd2049 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -16,13 +16,11 @@ target_include_directories(cxxopts SYSTEM INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/
+ target_sources(cxxopts INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/external/cxxopts/include/cxxopts.hpp)
+ 
+ 
+-add_subdirectory(benchmarks)
+ add_subdirectory(core)
+ add_subdirectory(huffman)
+ add_subdirectory(indexed_bzip2)
+ add_subdirectory(rapidgzip)
+ add_subdirectory(tools)
+-add_subdirectory(tests)
+ 
+ 
+ # rpmalloc

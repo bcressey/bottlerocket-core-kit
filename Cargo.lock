@@ -171,6 +171,7 @@ dependencies = [
  "pigz",
  "policycoreutils",
  "procps",
+ "rapidgzip",
  "rdma-core",
  "readline",
  "release",
@@ -945,6 +946,14 @@ version = "0.1.0"
 dependencies = [
  "glibc",
  "libselinux",
+]
+
+[[package]]
+name = "rapidgzip"
+version = "0.1.0"
+dependencies = [
+ "glibc",
+ "libz",
 ]
 
 [[package]]

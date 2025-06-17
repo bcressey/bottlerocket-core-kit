@@ -1,0 +1,31 @@
+From 42cc994564b2ff3148b5f84ea5787d6dc9d396b5 Mon Sep 17 00:00:00 2001
+From: Ben Cressey <bcressey@amazon.com>
+Date: Tue, 17 Jun 2025 21:33:52 +0000
+Subject: [PATCH] build: unset hardening cflags
+
+The upstream flags are x86_64-specific. Appropriate hardening flags
+are applied during the build process.
+
+Signed-off-by: Ben Cressey <bcressey@amazon.com>
+---
+ CMakeLists.txt | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 78d6a5d..934415a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -29,13 +29,6 @@ add_compile_options(
+     "$<$<COMPILE_LANG_AND_ID:CXX,GNU>:-fconstexpr-ops-limit=199000100>"
+     "$<$<COMPILE_LANG_AND_ID:CXX,AppleClang,Clang>:-fconstexpr-steps=199000100>"
+     "$<$<AND:$<COMPILE_LANG_AND_ID:CXX,AppleClang,Clang,GNU>,$<BOOL:${CODE_COVERAGE}>>:-O0;-g;--coverage>"
+-    # Add some hardening. See e.g.:
+-    # https://www.phoronix.com/news/GCC-fhardened-Hardening-Option
+-    # https://developers.redhat.com/blog/2018/03/21/compiler-and-linker-flags-gcc
+-    # I have not observed any performance impact for these.
+-    "$<$<COMPILE_LANG_AND_ID:CXX,Clang,GNU>:-fpie;-fstack-protector-strong;-fcf-protection=full>"
+-    # -fstack-clash-protection crashes the MINGW compiler https://github.com/msys2/MINGW-packages/issues/5348
+-    "$<$<AND:$<COMPILE_LANG_AND_ID:CXX,Clang,GNU>,$<NOT:$<PLATFORM_ID:Windows>>>:-fstack-clash-protection>"
+     # Fix error with MINGW: Fatal error: can't write 94 bytes to section .text of testCLI.cpp.obj: 'file too big'
+     "$<$<AND:$<COMPILE_LANG_AND_ID:CXX,Clang,GNU>,$<PLATFORM_ID:Windows>>:-Wa,-mbig-obj>"
+ )
