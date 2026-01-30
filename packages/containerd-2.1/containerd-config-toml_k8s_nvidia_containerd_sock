@@ -19,6 +19,9 @@ disabled_plugins = [
 
 imports = ["/etc/containerd/config.d/*.toml"]
 
+[debug]
+  level = "debug"
+
 [grpc]
 address = "/run/containerd/containerd.sock"
 
