@@ -136,6 +136,7 @@ soci-snapshotter = { path = "../../packages/soci-snapshotter" }
 static-pods = { path = "../../packages/static-pods" }
 strace = { path = "../../packages/strace" }
 systemd-252 = { path = "../../packages/systemd-252" }
+thar-be-registries = { path = "../../packages/thar-be-registries" }
 tpm2-tools = { path = "../../packages/tpm2-tools" }
 systemd-257 = { path = "../../packages/systemd-257" }
 util-linux = { path = "../../packages/util-linux" }

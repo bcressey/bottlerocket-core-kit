@@ -197,6 +197,7 @@ dependencies = [
  "strace",
  "systemd-252",
  "systemd-257",
+ "thar-be-registries",
  "tpm2-tools",
  "util-linux",
  "xfsprogs",
@@ -1131,6 +1132,13 @@ dependencies = [
  "libtss2",
  "libxcrypt",
  "util-linux",
+]
+
+[[package]]
+name = "thar-be-registries"
+version = "0.1.0"
+dependencies = [
+ "glibc",
 ]
 
 [[package]]

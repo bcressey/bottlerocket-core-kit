@@ -174,6 +174,7 @@ Requires: (%{_cross_os}rdma-core if %{_cross_os}variant-platform(aws))
 Requires: %{_cross_os}selinux-policy
 Requires: %{_cross_os}shim
 Requires: %{_cross_os}systemd
+Requires: %{_cross_os}thar-be-registries
 Requires: %{_cross_os}util-linux
 Requires: %{_cross_os}xfsprogs
 Requires: (%{name}-fips if %{_cross_os}image-feature(fips))
