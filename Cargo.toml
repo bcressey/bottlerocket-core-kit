@@ -103,7 +103,8 @@ members = [
   "packages/netdog",
   "packages/nftables",
   "packages/notation",
-  "packages/notation-image-verifier",
+  "packages/image-verifiers",
+
   "packages/nvidia-container-toolkit",
   "packages/nvidia-k8s-device-plugin",
   "packages/nvme-cli",

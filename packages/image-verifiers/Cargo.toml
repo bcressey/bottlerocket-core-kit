@@ -1,15 +1,18 @@
 [package]
-name = "notation-image-verifier"
+name = "image-verifiers"
 version = "0.1.0"
 edition = "2021"
 publish = false
 build = "../build.rs"
 
-[package.metadata.build-package]
-source-groups = [ "notation-image-verifier" ]
-
 [lib]
 path = "../packages.rs"
+
+[package.metadata.build-package]
+source-groups = [
+    "generate-readme",
+    "image-verifiers",
+]
 
 [build-dependencies]
 glibc = { path = "../glibc" }

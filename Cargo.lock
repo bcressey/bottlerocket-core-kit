@@ -113,6 +113,7 @@ dependencies = [
  "grep",
  "host-ctr",
  "hwloc",
+ "image-verifiers",
  "iproute",
  "iptables",
  "iputils",
@@ -174,7 +175,6 @@ dependencies = [
  "netdog",
  "nftables",
  "notation",
- "notation-image-verifier",
  "nvidia-container-toolkit",
  "nvidia-k8s-device-plugin",
  "nvme-cli",
@@ -445,6 +445,13 @@ version = "0.1.0"
 dependencies = [
  "glibc",
  "systemd-252",
+]
+
+[[package]]
+name = "image-verifiers"
+version = "0.1.0"
+dependencies = [
+ "glibc",
 ]
 
 [[package]]
@@ -934,13 +941,6 @@ dependencies = [
 
 [[package]]
 name = "notation"
-version = "0.1.0"
-dependencies = [
- "glibc",
-]
-
-[[package]]
-name = "notation-image-verifier"
 version = "0.1.0"
 dependencies = [
  "glibc",

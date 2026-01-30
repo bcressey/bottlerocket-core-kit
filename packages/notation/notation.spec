@@ -8,6 +8,8 @@
 
 %global _dwz_low_mem_die_limit 0
 
+%global notation_configdir %{_cross_sysconfdir}/containerd/image-verifiers/notation
+
 Name: %{_cross_os}%{gorepo}
 Version: %{rpmver}
 Release: 1%{?dist}
@@ -16,8 +18,7 @@ License: Apache-2.0
 URL: https://%{goimport}
 Source0: https://%{goimport}/archive/v%{gover}/%{gorepo}-v%{gover}.tar.gz
 Source1: bundled-%{gorepo}-v%{gover}.tar.gz
-Source2: notation-trust-policy-json
-Source3: notation-tmpfiles.conf
+Source2: notation-tmpfiles.conf
 
 BuildRequires: %{_cross_os}glibc-devel
 Requires: %{name}(binaries)
@@ -55,18 +56,17 @@ go build -ldflags "${GOLDFLAGS}" -o notation ./cmd/notation
 gofips build -ldflags "${GOLDFLAGS}" -o fips/notation ./cmd/notation
 
 %install
-install -d %{buildroot}{%{_cross_bindir},%{_cross_fips_bindir},%{_cross_templatedir}}
+install -d %{buildroot}{%{_cross_bindir},%{_cross_fips_bindir}}
 
 install -p -m 0755 notation %{buildroot}%{_cross_bindir}
 install -p -m 0755 fips/notation %{buildroot}%{_cross_fips_bindir}
-install -p -m 0644 %{S:2} %{buildroot}%{_cross_templatedir}/notation-trust-policy-json
 
-# Add the notation config and cache directories
-install -d %{buildroot}%{_cross_factorydir}%{_cross_sysconfdir}/notation
-install -d %{buildroot}%{_cross_factorydir}%{_cross_sysconfdir}/notation/plugins
-install -d %{buildroot}%{_cross_factorydir}%{_cross_sysconfdir}/notation/truststore/x509/signingAuthority
+# Add the notation config directories (truststore for certificates)
+install -d %{buildroot}%{_cross_factorydir}%{notation_configdir}/plugins
+install -d %{buildroot}%{_cross_factorydir}%{notation_configdir}/truststore/x509/signingAuthority
+
 install -d %{buildroot}%{_cross_tmpfilesdir}
-install -p -m 0644 %{S:3} %{buildroot}%{_cross_tmpfilesdir}/notation.conf
+install -p -m 0644 %{S:2} %{buildroot}%{_cross_tmpfilesdir}/notation.conf
 
 %cross_scan_attribution go-vendor vendor
 
@@ -74,11 +74,10 @@ install -p -m 0644 %{S:3} %{buildroot}%{_cross_tmpfilesdir}/notation.conf
 %license LICENSE
 %{_cross_attribution_file}
 %{_cross_attribution_vendor_dir}
-%{_cross_templatedir}/notation-trust-policy-json
 %{_cross_tmpfilesdir}/notation.conf
-%dir %{_cross_factorydir}%{_cross_sysconfdir}/notation
-%dir %{_cross_factorydir}%{_cross_sysconfdir}/notation/plugins
-%dir %{_cross_factorydir}%{_cross_sysconfdir}/notation/truststore/x509/signingAuthority
+%dir %{_cross_factorydir}%{notation_configdir}
+%dir %{_cross_factorydir}%{notation_configdir}/plugins
+%dir %{_cross_factorydir}%{notation_configdir}/truststore/x509/signingAuthority
 
 %files bin
 %{_cross_bindir}/notation
